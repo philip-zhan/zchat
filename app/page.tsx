@@ -1,6 +1,12 @@
 "use client";
 
-import { useMutation, useQuery } from "convex/react";
+import {
+  Authenticated,
+  AuthLoading,
+  Unauthenticated,
+  useMutation,
+  useQuery,
+} from "convex/react";
 import { api } from "../convex/_generated/api";
 import Link from "next/link";
 import Image from "next/image";
@@ -251,7 +257,9 @@ function AuthPopoverButton() {
         onClick={() => setIsOpen(!isOpen)}
         className="bg-green-600 hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white text-sm font-medium px-4 py-2 rounded-lg cursor-pointer transition-all duration-200 shadow-sm hover:shadow-md"
       >
-        Want Auth?
+        <Unauthenticated>Logged out</Unauthenticated>
+        <Authenticated>Logged in</Authenticated>
+        <AuthLoading>Loading...</AuthLoading>
       </button>
 
       {isOpen && (
